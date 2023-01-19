@@ -21,3 +21,12 @@ You can run the program in Docker container:
    machine where docker is running:
    
         docker run -d  -v d:\tmp:/usr/apple_store_top_chart/output  --name=top100 top100
+        
+Structure of the project:
+--------------------------
+input - directory for input file
+output - directory for output files
+src - src python scripts of the project
+docs - html documentation describing the source files
+Dockerfile - docker file for building the docker container image
+requirements.txt - file used for Dockerfile with required modeles which should be installed in Docker container 
