@@ -1,0 +1,148 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module web_scraping</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>web_scraping</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:d%3A%5Canat%5Cpycharmprojects%5Capplestoreapplapiservice%5Csrc%5Cweb_scraping.py">d:\anat\pycharmprojects\applestoreapplapiservice\src\web_scraping.py</a></font></td></tr></table>
+    <p><tt>Web&nbsp;Scraping&nbsp;by&nbsp;BeautifulSoup&nbsp;and&nbsp;lxml.etree</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="lxml.etree.html">lxml.etree</a><br>
+<a href="json.html">json</a><br>
+</td><td width="25%" valign=top><a href="os.html">os</a><br>
+<a href="requests.html">requests</a><br>
+</td><td width="25%" valign=top><a href="time.html">time</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-app_json_dict_clean"><strong>app_json_dict_clean</strong></a>(dict)</dt><dd><tt>Cleans&nbsp;unnecessary&nbsp;field&nbsp;from&nbsp;the&nbsp;application&nbsp;dict&nbsp;json&nbsp;data<br>
+:param&nbsp;dict:&nbsp;dictionary&nbsp;of&nbsp;json&nbsp;application&nbsp;data<br>
+:type&nbsp;dict:&nbsp;dict<br>
+:return:<br>
+:rtype:</tt></dd></dl>
+ <dl><dt><a name="-app_json_dict_update"><strong>app_json_dict_update</strong></a>(dict, name, rank, id, category, age_limit)</dt><dd><tt>Adds&nbsp;the&nbsp;missing&nbsp;fields&nbsp;to&nbsp;dictionary&nbsp;received&nbsp;from&nbsp;json&nbsp;file&nbsp;of&nbsp;application<br>
+:param&nbsp;dict:&nbsp;application&nbsp;dictionary&nbsp;of&nbsp;attributes<br>
+:type&nbsp;dict:&nbsp;dict<br>
+:param&nbsp;name:&nbsp;application&nbsp;name<br>
+:type&nbsp;name:&nbsp;str<br>
+:param&nbsp;rank:&nbsp;application&nbsp;rank<br>
+:type&nbsp;rank:&nbsp;int<br>
+:param&nbsp;id:&nbsp;application&nbsp;id<br>
+:type&nbsp;id:&nbsp;int<br>
+:param&nbsp;category:&nbsp;application&nbsp;category<br>
+:type&nbsp;category:&nbsp;str<br>
+:param&nbsp;agg_limit:&nbsp;application&nbsp;agg&nbsp;limit<br>
+:type&nbsp;agg_limit:&nbsp;str<br>
+:return:<br>
+:rtype:</tt></dd></dl>
+ <dl><dt><a name="-app_page_scraping"><strong>app_page_scraping</strong></a>(page, rank)</dt><dd><tt>Scraps&nbsp;application&nbsp;page&nbsp;by&nbsp;help&nbsp;of&nbsp;BeautifulSoup&nbsp;and&nbsp;lxml.etree&nbsp;libraries<br>
+:param&nbsp;page:&nbsp;html&nbsp;page&nbsp;of&nbsp;application<br>
+:type&nbsp;page:&nbsp;str<br>
+:param&nbsp;rank:&nbsp;rank&nbsp;of&nbsp;application&nbsp;as&nbsp;received&nbsp;from&nbsp;main&nbsp;page<br>
+:type&nbsp;rank:&nbsp;int<br>
+:return:<br>
+:rtype:</tt></dd></dl>
+ <dl><dt><a name="-get_app_age_limit"><strong>get_app_age_limit</strong></a>(dom)</dt><dd><tt>Scraps&nbsp;age_limit&nbsp;of&nbsp;the&nbsp;application<br>
+:param&nbsp;dom:&nbsp;HTML&nbsp;tree<br>
+:type&nbsp;dom:&nbsp;lxml.etree._Element<br>
+:return:&nbsp;application&nbsp;age_limit&nbsp;data<br>
+:rtype:&nbsp;str</tt></dd></dl>
+ <dl><dt><a name="-get_app_category"><strong>get_app_category</strong></a>(dom)</dt><dd><tt>Scraps&nbsp;category&nbsp;of&nbsp;the&nbsp;application<br>
+:param&nbsp;dom:&nbsp;HTML&nbsp;tree<br>
+:type&nbsp;dom:&nbsp;lxml.etree._Element<br>
+:return:&nbsp;application&nbsp;category<br>
+:rtype:&nbsp;str</tt></dd></dl>
+ <dl><dt><a name="-get_app_id"><strong>get_app_id</strong></a>(dom)</dt><dd><tt>Scraps&nbsp;application&nbsp;id.<br>
+:param&nbsp;dom:&nbsp;HTML&nbsp;tree<br>
+:type&nbsp;dom:&nbsp;lxml.etree._Element<br>
+:return:&nbsp;application&nbsp;id<br>
+:rtype:&nbsp;str</tt></dd></dl>
+ <dl><dt><a name="-get_app_json"><strong>get_app_json</strong></a>(dom)</dt><dd><tt>Scraps&nbsp;application&nbsp;json&nbsp;file&nbsp;and&nbsp;returns&nbsp;its&nbsp;in&nbsp;the&nbsp;form&nbsp;of&nbsp;dictionary<br>
+:param&nbsp;dom:&nbsp;HTML&nbsp;tree<br>
+:type&nbsp;dom:&nbsp;lxml.etree._Element<br>
+:return:&nbsp;application&nbsp;json&nbsp;file&nbsp;in&nbsp;form&nbsp;of&nbsp;dictionary<br>
+:rtype:&nbsp;dict</tt></dd></dl>
+ <dl><dt><a name="-get_app_name"><strong>get_app_name</strong></a>(dom)</dt><dd><tt>Scraps&nbsp;application&nbsp;name.<br>
+:param&nbsp;dom:&nbsp;HTML&nbsp;tree<br>
+:type&nbsp;dom:&nbsp;lxml.etree._Element<br>
+:return:&nbsp;application&nbsp;name<br>
+:rtype:&nbsp;str</tt></dd></dl>
+ <dl><dt><a name="-get_app_url"><strong>get_app_url</strong></a>(list_item)</dt><dd><tt>Scraps&nbsp;url&nbsp;of&nbsp;application<br>
+:param&nbsp;list_item:&nbsp;list&nbsp;item&nbsp;li&nbsp;(in&nbsp;html&nbsp;applications&nbsp;list)<br>
+:type&nbsp;list_item:&nbsp;bs4.element.Tag<br>
+:return:&nbsp;url&nbsp;of&nbsp;application<br>
+:rtype:&nbsp;str</tt></dd></dl>
+ <dl><dt><a name="-get_appl_rank"><strong>get_appl_rank</strong></a>(list_item)</dt><dd><tt>Scraps&nbsp;application&nbsp;rank&nbsp;from&nbsp;list&nbsp;item&nbsp;(in&nbsp;html&nbsp;file)<br>
+:param&nbsp;list_item:&nbsp;list&nbsp;item&nbsp;li&nbsp;(in&nbsp;html&nbsp;applications&nbsp;list)<br>
+:type&nbsp;list_item:&nbsp;bs4.element.Tag<br>
+:return:&nbsp;rank&nbsp;of&nbsp;application<br>
+:rtype:&nbsp;int</tt></dd></dl>
+ <dl><dt><a name="-get_chart_list_name"><strong>get_chart_list_name</strong></a>(soup)</dt><dd><tt>Extracts&nbsp;chart&nbsp;list&nbsp;name&nbsp;by&nbsp;help&nbsp;of&nbsp;BeautifulSoup&nbsp;library<br>
+:param&nbsp;soup:&nbsp;object&nbsp;of&nbsp;BeautifulSoup&nbsp;library&nbsp;used&nbsp;for&nbsp;scraping&nbsp;of&nbsp;html&nbsp;pages<br>
+:type&nbsp;soup:&nbsp;BeautifulSoup&nbsp;object<br>
+:return:&nbsp;chart&nbsp;list&nbsp;name<br>
+:rtype:&nbsp;str</tt></dd></dl>
+ <dl><dt><a name="-get_json_output_file_name"><strong>get_json_output_file_name</strong></a>(chart_list_name)</dt><dd><tt>Construct&nbsp;the&nbsp;json&nbsp;file&nbsp;name&nbsp;from&nbsp;chart&nbsp;list&nbsp;name&nbsp;string<br>
+:param&nbsp;chart_list_name:&nbsp;chart&nbsp;list&nbsp;name&nbsp;scraped&nbsp;from&nbsp;the&nbsp;url<br>
+:type&nbsp;chart_list_name:&nbsp;str<br>
+:return:&nbsp;json&nbsp;file&nbsp;name<br>
+:rtype:&nbsp;str</tt></dd></dl>
+ <dl><dt><a name="-list_of_applications_scraping"><strong>list_of_applications_scraping</strong></a>(soup)</dt><dd><tt>Goes&nbsp;over&nbsp;all&nbsp;links&nbsp;to&nbsp;all&nbsp;application&nbsp;found&nbsp;in&nbsp;this&nbsp;list<br>
+and&nbsp;scraps&nbsp;data&nbsp;from&nbsp;everyone&nbsp;of&nbsp;it.<br>
+:param&nbsp;soup:&nbsp;object&nbsp;of&nbsp;BeautifulSoup&nbsp;library&nbsp;used&nbsp;for&nbsp;scraping&nbsp;of&nbsp;html&nbsp;pages<br>
+:type&nbsp;soup:&nbsp;BeautifulSoup&nbsp;object<br>
+:return:<br>
+:rtype:</tt></dd></dl>
+ <dl><dt><a name="-main_chart_list_scraping"><strong>main_chart_list_scraping</strong></a>(html_page)</dt><dd><tt>Scraps&nbsp;data&nbsp;from&nbsp;the&nbsp;main&nbsp;application&nbsp;chart&nbsp;html&nbsp;page.<br>
+Scraps&nbsp;chart&nbsp;list&nbsp;name.&nbsp;Scraps&nbsp;list&nbsp;of&nbsp;all&nbsp;applications.<br>
+:param&nbsp;html_page:&nbsp;html&nbsp;page&nbsp;of&nbsp;main&nbsp;chart&nbsp;list&nbsp;of&nbsp;applications<br>
+:type&nbsp;page:&nbsp;str<br>
+:return:<br>
+:rtype:</tt></dd></dl>
+ <dl><dt><a name="-read_input_file"><strong>read_input_file</strong></a>()</dt><dd><tt>Read&nbsp;url&nbsp;string&nbsp;from&nbsp;input&nbsp;file&nbsp;found&nbsp;in&nbsp;/input/chart_url.txt&nbsp;file&nbsp;in&nbsp;project&nbsp;directory<br>
+:return:&nbsp;url&nbsp;of&nbsp;page&nbsp;which&nbsp;should&nbsp;be&nbsp;scraped&nbsp;for&nbsp;top&nbsp;chart&nbsp;list&nbsp;of&nbsp;applications<br>
+:rtype:&nbsp;str</tt></dd></dl>
+ <dl><dt><a name="-update_app_type"><strong>update_app_type</strong></a>(dict)</dt><dd><tt>Updates&nbsp;new&nbsp;field&nbsp;appType.&nbsp;It&nbsp;sets&nbsp;if&nbsp;its&nbsp;Tv&nbsp;App&nbsp;or&nbsp;Music&nbsp;App&nbsp;or&nbsp;Game&nbsp;App&nbsp;or&nbsp;Other.<br>
+And&nbsp;sets&nbsp;Other&nbsp;type.&nbsp;First&nbsp;set&nbsp;default&nbsp;value&nbsp;to&nbsp;new&nbsp;field.<br>
+:param&nbsp;dict:&nbsp;application&nbsp;dictionary&nbsp;of&nbsp;attributes<br>
+:type&nbsp;dict:&nbsp;dict<br>
+:return:<br>
+:rtype:</tt></dd></dl>
+ <dl><dt><a name="-web_get_chart_list"><strong>web_get_chart_list</strong></a>()</dt><dd><tt>Main&nbsp;function&nbsp;that&nbsp;takes&nbsp;url&nbsp;to&nbsp;top&nbsp;free&nbsp;applications&nbsp;chart&nbsp;list&nbsp;and&nbsp;returns<br>
+info&nbsp;about&nbsp;these&nbsp;application&nbsp;in&nbsp;format&nbsp;of&nbsp;json&nbsp;file.<br>
+It&nbsp;reads&nbsp;url&nbsp;from&nbsp;/input/chart_url.txt&nbsp;file&nbsp;found&nbsp;in&nbsp;project&nbsp;directory.<br>
+It&nbsp;writes&nbsp;data&nbsp;about&nbsp;applications&nbsp;scraped&nbsp;from&nbsp;input&nbsp;url&nbsp;into&nbsp;the&nbsp;json&nbsp;file<br>
+into&nbsp;the&nbsp;directory&nbsp;output&nbsp;found&nbsp;in&nbsp;project&nbsp;directory.&nbsp;Name&nbsp;of&nbsp;output&nbsp;json&nbsp;file&nbsp;is&nbsp;similar&nbsp;to&nbsp;name&nbsp;of&nbsp;chart&nbsp;list.<br>
+:return:<br>
+:rtype:</tt></dd></dl>
+ <dl><dt><a name="-write_output_file"><strong>write_output_file</strong></a>(file_name)</dt><dd><tt>Write&nbsp;to&nbsp;top_100_appl_list&nbsp;global&nbsp;variable&nbsp;of&nbsp;type&nbsp;list&nbsp;into&nbsp;the&nbsp;json&nbsp;file<br>
+with&nbsp;name&nbsp;given&nbsp;as&nbsp;input&nbsp;parameter&nbsp;to&nbsp;the&nbsp;function.&nbsp;The&nbsp;json&nbsp;file&nbsp;will&nbsp;be&nbsp;found<br>
+in&nbsp;output&nbsp;directory&nbsp;of&nbsp;the&nbsp;project<br>
+:param&nbsp;file_name:&nbsp;file&nbsp;name&nbsp;of&nbsp;json&nbsp;file&nbsp;to&nbsp;write<br>
+:type&nbsp;file_name:&nbsp;str<br>
+:return:<br>
+:rtype:</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>project_root</strong> = r'D:\Anat\PycharmProjects\AppleStoreApplApiService'<br>
+<strong>top_100_appl_list</strong> = []</td></tr></table>
+</body></html>
