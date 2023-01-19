@@ -5,7 +5,7 @@ import os
 from bs4 import BeautifulSoup
 from lxml import etree
 import json
-from src.web_request import *
+from web_request import *
 
 project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
 
@@ -29,7 +29,7 @@ def update_app_type(dict):
         dict["appType"]["TV App"] = "Yes"
     elif dict["category"] == "Music":
         dict["appType"]["Music App"] = "Yes"
-    elif dict["category"] == "Game":
+    elif dict["category"] == "Games":
         dict["appType"]["Game App"] = "Yes"
     else:
         dict["appType"]["Other"]["Other App"] = "Yes"
@@ -64,7 +64,6 @@ def app_json_dict_update(dict, name, rank, id, category, age_limit):
         dict["kidsFriendly"] = "No"
 
     update_app_type(dict)
-
 
 def get_app_age_limit(dom):
     """
@@ -164,7 +163,7 @@ def app_page_scraping(page, rank):
     app_category = get_app_category(app_dom)
     app_id = get_app_id(app_dom)
     app_json_dict = get_app_json(app_dom)
-
+    print(f"{rank}.{app_name}")
     app_json_dict_clean(app_json_dict)
     app_json_dict_update(app_json_dict, app_name, rank, int(app_id), app_category, app_age_limit)
     top_100_appl_list.append(app_json_dict)
@@ -216,7 +215,6 @@ def list_of_applications_scraping(soup):
     """
     app_list = soup.find('ol')
 
-    #id = 1
     # finding all li (list item)  tags in ol (ordered list) tag
     for li in app_list.find_all("li"):
         app_rank = get_appl_rank(li)
@@ -224,10 +222,6 @@ def list_of_applications_scraping(soup):
         response = web_get_url(app_url)
         app_page = response.text
         app_page_scraping(app_page, app_rank)
-        # id += 1
-        # if id > 6:
-        #     break
-
 
 def main_chart_list_scraping(html_page):
     """
@@ -295,6 +289,9 @@ def web_get_chart_list():
     """
     global top_100_appl_list
     url = read_input_file()
+    if "apps.apple.com/us/charts" not in url:
+        raise Exception("Not valid input url! Should be one of 'apps.apple.com/us/charts' urls.")
+
     response = web_get_url(url)
     page = response.text
     chart_list_name = main_chart_list_scraping(page)
