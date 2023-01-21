@@ -16,14 +16,14 @@ def web_get_url(url):
     :rtype:
     """
     try:
-        response = requests.get(url, timeout=30)
+        response = requests.get(url, timeout=60)
         response.raise_for_status()
         return response
 
     except requests.exceptions.HTTPError as errh:
       if errh.response.status_code == 429: # Too Many Requests
         time.sleep(int(errh.response.headers["Retry-After"]))
-        response_retry = requests.get(url, timeout=30)
+        response_retry = requests.get(url, timeout=60)
         return response_retry
       else:
         print("Http Error:", errh)
