@@ -1,3 +1,8 @@
+"""
+Test file used to test application with PyTest
+Tests included:
+    - test_invalid_url - check that it raises the InvalidUrlError
+"""
 import pytest
 import os
 import sys
