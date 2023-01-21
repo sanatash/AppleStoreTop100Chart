@@ -2,14 +2,20 @@
 Web Scraping by BeautifulSoup and lxml.etree
 """
 import os
+import sys
 from bs4 import BeautifulSoup
 from lxml import etree
 import json
-from web_request import *
 
 project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
 
+sys.path.append(project_root)
+from src.web_request import *
+
 top_100_appl_list = []
+
+class InvalidUrlError(ValueError):
+    pass
 
 def update_app_type(dict):
     """
@@ -240,13 +246,13 @@ def main_chart_list_scraping(html_page):
     return chart_list_name
 
 
-def read_input_file():
+def read_input_file(input_file_path):
     """
-    Read url string from input file found in /input/chart_url.txt file in project directory
+    Read url string from input file passed as command-line argument to the python script
     :return: url of page which should be scraped for top chart list of applications
     :rtype: str
     """
-    with open(f"{project_root}/input/chart_url.txt", "r") as infile:
+    with open(os.path.join(project_root, input_file_path), "r") as infile:
         url = infile.read().strip()
         return url
 
@@ -277,20 +283,21 @@ def get_json_output_file_name(chart_list_name):
     return json_file_name
 
 
-def web_get_chart_list():
+def web_get_chart_list(input_file_path):
     """
     Main function that takes url to top free applications chart list and returns
     info about these application in format of json file.
-    It reads url from /input/chart_url.txt file found in project directory.
+    It reads url from command-line argument which is related path to file
+    found in project directory which is /input/chart_url.txt
     It writes data about applications scraped from input url into the json file
     into the directory output found in project directory. Name of output json file is similar to name of chart list.
     :return:
     :rtype:
     """
     global top_100_appl_list
-    url = read_input_file()
+    url = read_input_file(input_file_path)
     if "apps.apple.com/us/charts" not in url:
-        raise Exception("Not valid input url! Should be one of 'apps.apple.com/us/charts' urls.")
+        raise InvalidUrlError("Not valid input url! Should be one of 'apps.apple.com/us/charts' urls.")
 
     response = web_get_url(url)
     page = response.text
@@ -300,4 +307,4 @@ def web_get_chart_list():
 
 
 if __name__ == '__main__':
-    web_get_chart_list()
+    web_get_chart_list(sys.argv[1])

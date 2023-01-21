@@ -12,4 +12,6 @@ COPY input ./input
 
 RUN mkdir -p output ./
 
-CMD ["python", "src/web_scraping.py"]
+ENV PYTHONPATH "${PYTHONPATH}:/usr/apple_store_top_chart"
+
+CMD ["python", "src/web_scraping.py", "input/chart_url.txt"]
