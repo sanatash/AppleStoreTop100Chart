@@ -36,3 +36,20 @@ Dockerfile - docker file for building the docker container image\
 requirements.txt - file used for Dockerfile with required modeles which should be installed in Docker container\
 test - directory for tests performed by Pytest
 
+The structure of output json file:
+-----------------------------------
+This is the list of data about of top 100 applications scraped from the input url. The data per application consists of:
+- ApplicationName
+- ageLimit
+- aggregateRating with ratingValue and reviewCount fields
+- applicationCategory
+- applicationId
+- appType : one of "Game App"/"Music App"/"TV App"/"Other" should be "Yes". If it's "Other App" that type field should be updated too
+- author
+- category
+- datePublished
+- description
+- kidsFriendly : if ageLimit is "4+" then it is kids friendly
+- name
+- operatingSystem
+- rank
